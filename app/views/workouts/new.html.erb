@@ -1,0 +1,20 @@
+<%= form_for @workout do |f| %>
+    <div>
+        <%= f.label(:date) %>
+        <%= f.date_field(:date) %>
+    </div>
+    <div>
+        <%= f.label(:distance) %>
+        <%= f.number_field(:distance, min: 0) %>
+        <%= f.label(:duration) %>
+        <%= f.number_field(:duration, min: 0) %>
+    </div>
+    <div>
+        <%= f.label(:title) %>
+        <%= f.text_field(:title) %>
+    </div>
+    <div>
+        <%= f.label(:details) %>
+        <%= f.text_area(:details) %>
+    </div>
+<% end %>
