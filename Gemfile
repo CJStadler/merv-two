@@ -16,6 +16,7 @@ gem 'unitwise'
 
 # Use debugger
 gem 'better_errors', group: [:development, :test]
+gem 'binding_of_caller', group: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

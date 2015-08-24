@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823192709) do
+ActiveRecord::Schema.define(version: 20150824001914) do
+
+  create_table "distance_units", force: true do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.float  "meters"
+  end
 
   create_table "workouts", force: true do |t|
     t.date     "date"
     t.float    "distance"
-    t.integer  "distance_unit_id"
+    t.string   "distance_unit"
     t.float    "duration"
     t.string   "title"
     t.text     "details"
