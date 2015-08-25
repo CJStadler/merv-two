@@ -1,0 +1,23 @@
+<% # requires a local variable "date" %>
+<%= first_of_month = Date.new(2015, 8) %>
+<table id='calendar'>
+    <thead>
+        <tr>
+            <% days_of_week.each do |day| %>
+                <th><%= day %></th>
+            <% end %>
+        </tr>
+    </thead>
+        <% each_week(first_of_month) do |first_of_week| %>
+            <tr>
+                <% each_day(first_of_week) do |day| %>
+                    <td class="<%= "other-month" if day.month != first_of_month.month %>">
+                        <%= day.mday %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <tbody>
+
+    </tbody>
+</table>
