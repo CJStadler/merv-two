@@ -25,6 +25,10 @@ module WorkoutsHelper
         end
     end
 
+    def month_name(date)
+        date.strftime("%B")
+    end
+
     private
 
     def get_first_of_week(date)
