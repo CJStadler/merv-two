@@ -1,5 +1,5 @@
 class Workout < ActiveRecord::Base
-    
+
     # Associations
     ##################################
     #belongs_to :log
@@ -33,5 +33,24 @@ class Workout < ActiveRecord::Base
 
     # Class Methods
     ##################################
+
+    # Scopes
+
+    def self.by_date(date)
+        where(date: date)
+    end
+
+    def self.by_month(month, year)
+        by_year(year).
+            where("extract(month from date) = ?", month)
+    end
+
+    def self.by_year(year)
+        where("extract(year from date) = ?", year)
+    end
+
+    def self.by_week(first_of_week)
+        where("date >= ? AND date <= ?", first_of_week, first_of_week + 6.days)
+    end
 
 end
