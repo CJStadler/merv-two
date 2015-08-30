@@ -1,7 +1,7 @@
 <% # requires local variables "year" and "month" %>
 <% first_of_month = Date.new(year, month) %>
 
-<table id='calendar'>
+<table class="month">
     <thead>
         <tr>
             <th colspan="8"><%= month_name(first_of_month) %> <%= year %></th>
@@ -24,9 +24,17 @@
                 <% each_day(first_of_week) do |day| %>
                     <td class="<%= "other-month" if day.month != first_of_month.month %> <%= "today" if day == Date.today %>">
                         <%= link_to(day.mday, new_workout_path(date: day.to_s)) %>
+                        <ul>
+                            <% Workout.by_date(day).each do |workout| %>
+                                <li><%= link_to(workout.summary, workout) %></li>
+                            <% end %>
+                        </ul>
                     </td>
                 <% end %>
-                <td>Week:</td>
+                <td>
+                    Week:
+                    <%= Workout.by_week(first_of_week).reduce(0) { |sum, w| sum + w.distance.to_mile.to_f } %> miles
+                </td>
             </tr>
         <% end %>
     </tbody>

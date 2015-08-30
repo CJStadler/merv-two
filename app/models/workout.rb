@@ -23,6 +23,10 @@ class Workout < ActiveRecord::Base
         Unitwise(read_attribute(:distance), distance_unit)
     end
 
+    def summary
+        "#{distance.to_s.pluralize}. #{title}"
+    end
+
     def meters
         distance.to_meter.to_f
     end
