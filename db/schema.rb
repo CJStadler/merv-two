@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20150830170216) do
 
   create_table "logs", force: true do |t|
     t.integer  "user_id"
+    t.string   "name"
     t.boolean  "private",                    default: true
-    t.string   "preferred_distance_unit_id"
+    t.integer  "preferred_distance_unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
