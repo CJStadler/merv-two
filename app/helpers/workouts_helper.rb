@@ -29,9 +29,9 @@ module WorkoutsHelper
         date.strftime("%B")
     end
 
-    def sum_workouts(workouts)
+    def sum_workouts(workouts, unit)
         workouts.reduce(0) {
-            |sum, w| sum + w.distance.convert_to("mile").to_f
+            |sum, w| sum + w.distance.convert_to(unit.name).to_f
         }
     end
 

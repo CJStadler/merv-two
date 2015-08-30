@@ -3,7 +3,7 @@ class Workout < ActiveRecord::Base
     # Associations
     ##################################
     belongs_to :distance_unit
-    #belongs_to :log
+    belongs_to :log
     #belongs_to :shoe
 
     # Validations
@@ -26,7 +26,7 @@ class Workout < ActiveRecord::Base
     end
 
     def summary
-        "#{distance.to_s.pluralize}. #{title}"
+        "#{distance.to_i}#{distance_unit.abbreviation}. #{title}"
     end
 
     def meters

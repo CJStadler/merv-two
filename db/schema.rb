@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830170216) do
+ActiveRecord::Schema.define(version: 20150830194027) do
 
   create_table "distance_units", force: true do |t|
     t.string  "name"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20150830170216) do
   create_table "workouts", force: true do |t|
     t.date     "date"
     t.float    "distance"
-    t.string   "distance_unit"
     t.float    "duration"
     t.string   "title"
     t.text     "details"
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150830170216) do
     t.integer  "log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "distance_unit_id"
   end
 
   add_index "workouts", ["date"], name: "index_workouts_on_date", using: :btree

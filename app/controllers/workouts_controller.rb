@@ -1,6 +1,8 @@
 class WorkoutsController < ApplicationController
 
     def index
+        @log = Log.find(1)
+
         # how many months to show
         if params[:n_months].present?
             @n_months = params[:n_months].to_i
@@ -36,12 +38,14 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-        #@log = params[:log_id]
         #if current_user.owns(@log)
             @workout = Workout.new(workout_params)
+            @workout.log_id = 1
             @workout.distance_unit = DistanceUnit.find_by_name("mile")
             @workout.save
         #end
+
+        redirect_to "/"
     end
 
     private
