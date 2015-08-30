@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823192709) do
+ActiveRecord::Schema.define(version: 20150830170216) do
+
+  create_table "distance_units", force: true do |t|
+    t.string  "name"
+    t.string  "abbreviation"
+    t.integer "log_id"
+  end
+
+  add_index "distance_units", ["name"], name: "index_distance_units_on_name", using: :btree
+
+  create_table "logs", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "private",                    default: true
+    t.string   "preferred_distance_unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
 
   create_table "workouts", force: true do |t|
     t.date     "date"

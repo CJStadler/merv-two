@@ -2,17 +2,19 @@ class Workout < ActiveRecord::Base
 
     # Associations
     ##################################
+    belongs_to :distance_unit
     #belongs_to :log
     #belongs_to :shoe
 
     # Validations
     ##################################
-    validates_presence_of :distance_unit, if: :distance?
-    validate :distance_unit_correct, if: :distance?
+    validates_presence_of :distance_unit_id, if: :distance?
+    validate :distance_unit_in_log, if: :distance?
 
-    def distance_unit_correct
-        if Unitwise.search(distance_unit).blank?
-            errors.add(:distance_unit, "invalid")
+    # the unit used must be public or owned by the log
+    def distance_unit_in_log
+        if distance_unit.log_id.present? && distance_unit.log_id != log_id
+            errors.add(:distance_unit_id, "must be owned by this log.")
         end
     end
 
@@ -20,7 +22,7 @@ class Workout < ActiveRecord::Base
     ##################################
 
     def distance
-        Unitwise(read_attribute(:distance), distance_unit)
+        Unitwise(read_attribute(:distance), distance_unit.name)
     end
 
     def summary

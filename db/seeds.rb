@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+DistanceUnit.create([
+    {name: "mile", abbreviation: "mi"},
+    {name: "kilometer", abbreviation: "km"},
+    {name: "meter", abbreviation: "m"},
+    {name: "foot", abbreviation: "ft"},
+    {name: "yard", abbreviation: "yd"}
+])

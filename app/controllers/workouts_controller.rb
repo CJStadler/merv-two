@@ -39,7 +39,7 @@ class WorkoutsController < ApplicationController
         #@log = params[:log_id]
         #if current_user.owns(@log)
             @workout = Workout.new(workout_params)
-            @workout.distance_unit = "mile"
+            @workout.distance_unit = DistanceUnit.find_by_name("mile")
             @workout.save
         #end
     end
@@ -53,7 +53,7 @@ class WorkoutsController < ApplicationController
                 :date,
                 :duration,
                 :distance,
-                :distance_unit,
+                :distance_unit_id,
                 :title,
                 :details,
                 :shoe_id

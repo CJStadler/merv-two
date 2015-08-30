@@ -7,6 +7,7 @@ class CreateTableLogs < ActiveRecord::Migration
 
         t.index :user_id
 
+        t.timestamps
     end
   end
 end
