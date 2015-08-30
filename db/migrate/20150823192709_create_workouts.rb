@@ -10,6 +10,10 @@ class CreateWorkouts < ActiveRecord::Migration
         t.references :shoe
         t.references :log
 
+        t.index :log_id
+        t.index :date
+        t.index [:log_id, :date]
+
         t.timestamps
     end
   end

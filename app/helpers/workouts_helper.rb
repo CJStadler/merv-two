@@ -29,6 +29,12 @@ module WorkoutsHelper
         date.strftime("%B")
     end
 
+    def sum_workouts(workouts)
+        workouts.reduce(0) {
+            |sum, w| sum + w.distance.convert_to("mile").to_f
+        }
+    end
+
     private
 
     def get_first_of_week(date)

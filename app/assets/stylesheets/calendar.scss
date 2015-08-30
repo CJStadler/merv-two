@@ -1,3 +1,54 @@
+
 .month {
     width: 100%;
+    margin: 10px 0;
+    border: 1px solid black;
+
+    h1 {
+        margin: 3px;
+    }
+
+    th, td {
+        border: 1px solid black;
+        vertical-align: top;
+    }
+
+    th, .other-month, .weekly-total {
+        background-color: lightsteelblue;
+    }
+
+    td {
+        height: 3em;
+
+        ul {
+
+            list-style: none;
+            padding: 0;
+            margin: 5px;
+
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .date {
+        margin: 0;
+
+        a {
+            color: maroon;
+        }
+
+        &.today a {
+            color: blue;
+        }
+    }
+
+    tfoot {
+        background-color: lightsteelblue;
+
+        td {
+            height: 1em;
+        }
+    }
 }

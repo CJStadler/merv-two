@@ -4,7 +4,7 @@
 <table class="month">
     <thead>
         <tr>
-            <th colspan="8"><%= month_name(first_of_month) %> <%= year %></th>
+            <th colspan="8"><h1><%= month_name(first_of_month) %> <%= year %></h1></th>
         </tr>
         <tr>
             <% days_of_week.each do |day| %>
@@ -15,15 +15,18 @@
     </thead>
     <tfoot>
         <tr>
-            <td colspan="8"><%= month_name(first_of_month) %> Total:</td>
+            <td colspan="8">
+                <%= month_name(first_of_month) %> Total:
+                <%= sum_workouts(Workout.by_month(month, year)) %> miles
+            </td>
         </tr>
     </tfoot>
     <tbody>
         <% each_week(first_of_month) do |first_of_week| %>
             <tr>
                 <% each_day(first_of_week) do |day| %>
-                    <td class="<%= "other-month" if day.month != first_of_month.month %> <%= "today" if day == Date.today %>">
-                        <%= link_to(day.mday, new_workout_path(date: day.to_s)) %>
+                    <td class="<%= "other-month" if day.month != first_of_month.month %>">
+                        <h3 class="date  <%= "today" if day == Date.today %>"><%= link_to(day.mday, new_workout_path(date: day.to_s)) %></h3>
                         <ul>
                             <% Workout.by_date(day).each do |workout| %>
                                 <li><%= link_to(workout.summary, workout) %></li>
@@ -31,9 +34,9 @@
                         </ul>
                     </td>
                 <% end %>
-                <td>
+                <td class="weekly-total">
                     Week:
-                    <%= Workout.by_week(first_of_week).reduce(0) { |sum, w| sum + w.distance.to_mile.to_f } %> miles
+                    <%= sum_workouts(Workout.by_week(first_of_week)) %> miles
                 </td>
             </tr>
         <% end %>

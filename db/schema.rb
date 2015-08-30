@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824001914) do
-
-  create_table "distance_units", force: true do |t|
-    t.string "name"
-    t.string "abbreviation"
-    t.float  "meters"
-  end
+ActiveRecord::Schema.define(version: 20150823192709) do
 
   create_table "workouts", force: true do |t|
     t.date     "date"
@@ -31,5 +25,9 @@ ActiveRecord::Schema.define(version: 20150824001914) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "workouts", ["date"], name: "index_workouts_on_date", using: :btree
+  add_index "workouts", ["log_id", "date"], name: "index_workouts_on_log_id_and_date", using: :btree
+  add_index "workouts", ["log_id"], name: "index_workouts_on_log_id", using: :btree
 
 end
