@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830194027) do
+ActiveRecord::Schema.define(version: 20150831021148) do
 
   create_table "distance_units", force: true do |t|
     t.string  "name"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 20150830194027) do
   end
 
   add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string "name"
+    t.string "password_digest"
+  end
 
   create_table "workouts", force: true do |t|
     t.date     "date"
