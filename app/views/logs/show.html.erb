@@ -1,4 +1,7 @@
-<p>Logged in as: <%= current_user.name %></p>
+<% if logged_in? %>
+    <p>Logged in as: <%= @current_user.name %></p>
+<% end %>
+
 <h1>Log: <%= @log.name %></h1>
 <%= render partial: "calendar_controller", locals: {year: @year, month: @month} %>
 <section id="calendar">

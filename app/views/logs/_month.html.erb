@@ -27,7 +27,13 @@
             <tr>
                 <% each_day(first_of_week) do |day| %>
                     <td class="<%= "other-month" if day.month != first_of_month.month %>">
-                        <h3 class="date  <%= "today" if day == Date.today %>"><%= link_to(day.mday, new_workout_path(date: day.to_s)) %></h3>
+                        <h3 class="date  <%= "today" if day == Date.today %>">
+                            <% if @current_user == @log.user %>
+                                <%= link_to(day.mday, new_workout_path(date: day.to_s)) %>
+                            <% else %>
+                                <%= day.mday %>
+                            <% end %>
+                        </h3>
                         <ul>
                             <% @log.workouts.by_date(day).each do |workout| %>
                                 <li><%= link_to(workout.summary, workout) %></li>

@@ -1,4 +1,4 @@
-module WorkoutsHelper
+module LogsHelper
 
     # Helpers for calendar view
     #####################################
