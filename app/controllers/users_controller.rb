@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def new
-        @user = User.new(user_params)
+        @user = User.new
     end
 
     def create
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
 
     def login
-        @user = User.new(user_params)
+        @user = User.new
     end
 
     def authenticate
@@ -26,6 +26,11 @@ class UsersController < ApplicationController
         else
             render :login
         end
+    end
+
+    def logout
+        reset_session
+        redirect_to "/"
     end
 
     private

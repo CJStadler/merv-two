@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
     resources :workouts
     resources :logs
-    resources :users do
-        get 'login'
-        post 'authenticate'
-    end
+    resources :users
+
+    get "/login", to: "users#login"
+    post "/authenticate", to: "users#authenticate"
+    get "/logout", to: "users#logout"
 
     get "/console", to: "welcome#console"
 end
