@@ -1,5 +1,8 @@
 <% if logged_in? %>
     <p>Logged in as: <%= @current_user.name %></p>
+    <p><%= link_to("Sign Out", "/logout") %></p>
+<% else %>
+    <p><%= link_to("Log In", "/login") %></p>
 <% end %>
 
 <h1>Log: <%= @log.name %></h1>

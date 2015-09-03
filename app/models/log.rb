@@ -8,6 +8,12 @@ class Log < ActiveRecord::Base
 
     # Instance Variables
     ###################################
+
+    # use the name instead of the id when generating the path
+    def to_param
+        name
+    end
+
     def public
         ! self.private
     end

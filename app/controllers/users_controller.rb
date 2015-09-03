@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
         if @user.present? && @user.authenticate(user_params[:password])
             session[:user_id] = @user.id
-            redirect_to "/"
+            redirect_to @user.log
         else
             render :login
         end

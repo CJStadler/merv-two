@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
 
-    root "logs#index"
+    root "users#login"
 
     resources :users
     resources :workouts
-    resources :logs do
-        get ":name", to: "logs#show", on: :collection # this should be default path for log
-    end
-
+    resources :logs, param: :name
 
     get "/login", to: "users#login"
     post "/authenticate", to: "users#authenticate"
