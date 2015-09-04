@@ -1,4 +1,4 @@
-<form action="<%= workouts_path %>" method="GET" id="workouts-controller">
+<form action="<%= log_path(log) %>" method="GET" id="calendar-controller">
     <label for="select-month">Go To:</label>
     <%= select_month(month, {}, {id: "select-month", name: "month"}) %>
     <input type="number" id="select-year" name="year" value="<%= year %>">

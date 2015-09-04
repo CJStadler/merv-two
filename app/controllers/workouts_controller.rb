@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
 
     def index
-        
+
     end
 
     def show
@@ -9,6 +9,7 @@ class WorkoutsController < ApplicationController
     end
 
     def new
+        @log = Log.find_by_name(params[:log_name])
         @workout = Workout.new
 
         if params[:date].present?

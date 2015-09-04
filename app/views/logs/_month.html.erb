@@ -17,8 +17,8 @@
         <tr>
             <td colspan="8">
                 <%= month_name(first_of_month) %> total:
-                <%= sum_workouts(@log.workouts.by_month(month, year), @log.preferred_distance_unit) %>
-                <%= @log.preferred_distance_unit.name.pluralize %>
+                <%= sum_workouts(log.workouts.by_month(month, year), log.preferred_distance_unit) %>
+                <%= log.preferred_distance_unit.name.pluralize %>
             </td>
         </tr>
     </tfoot>
@@ -28,23 +28,25 @@
                 <% each_day(first_of_week) do |day| %>
                     <td class="<%= "other-month" if day.month != first_of_month.month %>">
                         <h3 class="date  <%= "today" if day == Date.today %>">
-                            <% if @current_user == @log.user %>
-                                <%= link_to(day.mday, new_workout_path(date: day.to_s)) %>
+                            <% if @current_user == log.user %>
+                                <%= link_to(day.mday, new_log_workout_path(log, date: day.to_s)) %>
                             <% else %>
                                 <%= day.mday %>
                             <% end %>
                         </h3>
                         <ul>
-                            <% @log.workouts.by_date(day).each do |workout| %>
-                                <li><%= link_to(workout.summary, workout) %></li>
+                            <% log.workouts.by_date(day).each do |workout| %>
+                                <li><%= link_to workout.summary, [log, workout] %></li>
                             <% end %>
                         </ul>
                     </td>
                 <% end %>
                 <td class="weekly-total">
                     Week:
-                    <%= sum_workouts(@log.workouts.by_week(first_of_week), @log.preferred_distance_unit) %>
-                    <%= @log.preferred_distance_unit.name.pluralize %>
+                    <strong>
+                        <%= sum_workouts(log.workouts.by_week(first_of_week), log.preferred_distance_unit) %>
+                        <%= log.preferred_distance_unit.name.pluralize %>
+                    </strong>
                 </td>
             </tr>
         <% end %>

@@ -6,7 +6,7 @@
 <% end %>
 
 <h1>Log: <%= @log.name %></h1>
-<%= render partial: "calendar_controller", locals: {year: @year, month: @month} %>
+<%= render partial: "calendar_controller", locals: {log: @log, year: @year, month: @month} %>
 <section id="calendar">
     <% @n_months.times do %>
         <%= render partial: "month", locals: {log: @log, year: @year, month: @month} %>
