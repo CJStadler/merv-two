@@ -2,8 +2,10 @@
     <p>Logged in as: <%= @current_user.name %></p>
     <p><%= link_to("Sign Out", "/logout") %></p>
 <% else %>
-    <p><%= link_to("Log In", "/login") %></p>
+    <%= render partial: "welcome/login_form" %>
 <% end %>
+
+<%= render partial: "get_log" %>
 
 <h1>Log: <%= @log.name %></h1>
 <%= render partial: "calendar_controller", locals: {log: @log, year: @year, month: @month} %>

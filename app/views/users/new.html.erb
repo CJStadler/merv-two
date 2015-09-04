@@ -11,5 +11,10 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, required: true %>
     </div>
+
+    <%= fields_for :log do |ff| %>
+        <%= render partial: "logs/form_fields", locals: {f: ff} %>
+    <% end %>
+
     <%= f.submit %>
 <% end %>

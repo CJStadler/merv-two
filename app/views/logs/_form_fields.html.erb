@@ -1,0 +1,11 @@
+<div>
+    <%= f.label :name, "Log Name" %>
+    <%= f.text_field :name, required: true %>
+</div>
+<div>
+    <%= f.label :preferred_distance_unit_id %>
+    <%= f.collection_select :preferred_distance_unit_id,
+                            DistanceUnit.all,
+                            :id,
+                            :name %>
+</div>

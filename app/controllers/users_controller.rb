@@ -7,14 +7,13 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            @log = Log.new(log_params)
+            @log.user = @user
+            @log.save
             redirect_to "/"
         else
             redirect_to new_user_path
         end
-    end
-
-    def login
-        @user = User.new
     end
 
     def authenticate
@@ -24,7 +23,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to @user.log
         else
-            render :login
+            redirect_to "/"
         end
     end
 
@@ -42,6 +41,15 @@ class UsersController < ApplicationController
                 :name,
                 :password,
                 :password_confirmation
+            )
+    end
+
+    def log_params
+        params.
+            require(:log).
+            permit(
+                :name,
+                :preferred_distance_unit_id
             )
     end
 end

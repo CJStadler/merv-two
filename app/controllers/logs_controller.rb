@@ -28,8 +28,16 @@ class LogsController < ApplicationController
     end
 
     def index
-        redirect_to @current_user.logs.first
-        # how to set default path for log?
+        if params[:log][:name].present?
+            log = Log.find_by_name(params[:log][:name])
+            if log.present?
+                redirect_to log
+            else
+                redirect_to :back
+            end
+        else
+            redirect_to @current_user.logs.first
+        end
     end
 
     private

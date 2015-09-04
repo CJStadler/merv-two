@@ -1,10 +1,11 @@
-<form action="/authenticate" method="get">
+<form id="login" action="/authenticate" method="post">
+    <%= token_tag %>
     <div>
         <label for="login-name">User Name</label>
         <input type="text" id="login-name" name="user[name]" required>
     </div>
     <div>
-        <label for="login-password">User Name</label>
+        <label for="login-password">Password</label>
         <input type="password" id="login-password" name="user[password]" required>
     </div>
     <div>
