@@ -42,6 +42,11 @@ class Workout < ActiveRecord::Base
 
     # Scopes
 
+    def self.text_search(q)
+        # do better free text search here
+        where("details ILIKE ? OR title ILIKE ?", "%#{q}%", "%#{q}%")
+    end
+
     def self.by_date(date)
         where(date: date)
     end

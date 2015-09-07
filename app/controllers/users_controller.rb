@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         if @user.save
             @log = Log.new(log_params)
             @log.user = @user
-            @log.save
+            @log.save # check this and notify
             redirect_to "/"
         else
             redirect_to new_user_path

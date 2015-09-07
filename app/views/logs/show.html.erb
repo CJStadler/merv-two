@@ -8,6 +8,7 @@
 <%= render partial: "get_log" %>
 
 <h1>Log: <%= @log.name %></h1>
+<%= render partial: "workouts/search_form", locals: {log: @log} %>
 <%= render partial: "calendar_controller", locals: {log: @log, year: @year, month: @month} %>
 <section id="calendar">
     <% @n_months.times do %>

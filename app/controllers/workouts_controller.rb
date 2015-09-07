@@ -1,7 +1,11 @@
 class WorkoutsController < ApplicationController
 
     def index
+        # for search
+        @log = Log.find_by_name(params[:log_name])
+        @workouts = @log.workouts
 
+        @workouts = @workouts.text_search(params[:text_search]) if params[:text_search].present?
     end
 
     def show
