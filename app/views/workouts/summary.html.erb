@@ -1,0 +1,11 @@
+<div id="workouts-summary">
+    <%= @start_date %> to <%= @end_date %>
+    Total: <%= @workouts.sum_distance(@log.preferred_distance_unit) %>
+    <%= @workouts.each do |workout| %>
+        <div class="workout">
+            <%= workout.summary %>
+            <br>
+            <%= workout.details %>
+        </div>
+    <% end %>
+</div>

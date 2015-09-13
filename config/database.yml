@@ -17,6 +17,7 @@ test:
   <<: *default
   database: merv_test
 
+# need to specify info for openshift database
 production:
   <<: *default
   database: merv_production
