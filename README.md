@@ -3,6 +3,8 @@ merv-two running log
 
 A running log app inspired by http://merv.stanford.edu/, with an emphasis on simplicity and functionality.
 
+Why do we show the next n months when the user usually wants to see the previous months? But we also want to have the current month first.
+
 ## Current Features
 
 - Multiple logs per user.

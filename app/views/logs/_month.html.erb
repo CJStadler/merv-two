@@ -1,10 +1,13 @@
-<% # requires local variables "year" and "month" %>
-<% first_of_month = Date.new(year, month) %>
+<% # requires local variables "log", "first_of_month", "focus_month" %>
 
-<table class="month">
+<table class="month"
+    <% if first_of_month.month == focus_day.month %>
+        id="focus-month"
+    <% end %>
+>
     <thead>
         <tr>
-            <th colspan="8" class="title"><h2><%= month_name(first_of_month) %> <%= year %></h2></th>
+            <th colspan="8" class="title"><h2><%= month_name(first_of_month) %> <%= first_of_month.year %></h2></th>
         </tr>
         <tr>
             <% days_of_week.each do |day| %>
@@ -16,8 +19,13 @@
     <tfoot>
         <tr>
             <td colspan="8">
-                <%= link_to "#{month_name(first_of_month)}:", summary_log_path(month: month, year: year) %>
-                <%= sum_workouts(log.workouts.by_month(month, year), log.preferred_distance_unit) %>
+                <%= link_to "#{month_name(first_of_month)}:",
+                            summary_log_path(month: first_of_month.month, year: first_of_month.year)
+                %>
+                <%= sum_workouts(
+                        log.workouts.by_month(first_of_month.month, first_of_month.year),
+                        log.preferred_distance_unit
+                ) %>
                 <%= log.preferred_distance_unit.name.pluralize %>
             </td>
         </tr>

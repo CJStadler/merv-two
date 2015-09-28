@@ -12,19 +12,22 @@ class LogsController < ApplicationController
             @n_months = 6
         end
 
-        # month to start with
+        # month to focus
         if params[:month].present?
-            @month = params[:month].to_i
+            month = params[:month].to_i
         else
-            @month = Date.today.month
+            month = Date.today.month
         end
 
         # year to start with
         if params[:year].present?
-            @year = params[:year].to_i
+            year = params[:year].to_i
         else
-            @year = Date.today.year
+            year = Date.today.year
         end
+
+        @focus_day = Date.new(year, month)
+        @start_day = @focus_day - (@n_months/2).months
     end
 
     def index

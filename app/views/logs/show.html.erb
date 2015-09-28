@@ -11,14 +11,19 @@
 <%= render partial: "workouts/search_form", locals: {log: @log} %>
 <%= render partial: "calendar_controller", locals: {log: @log, year: @year, month: @month} %>
 <section id="calendar">
+    <% first_of_current_month = @start_day.beginning_of_month %>
     <% @n_months.times do %>
-        <%= render partial: "month", locals: {log: @log, year: @year, month: @month} %>
+        <%= render partial: "month", locals: {
+                                                log: @log,
+                                                first_of_month: first_of_current_month,
+                                                focus_day: @focus_day
+                                            } %>
         <%
-            @month += 1
-            if @month > 12
-                @month = 1
-                @year += 1
-            end
+            first_of_current_month += 1.month
         %>
     <% end %>
+    <script type="text/javascript">
+        var focus_month = document.getElementById("focus-month");
+        focus_month.scrollIntoViewIfNeeded(true);
+    </script>
 </section>
