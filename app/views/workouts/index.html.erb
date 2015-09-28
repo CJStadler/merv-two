@@ -1,11 +1,5 @@
 <%= render partial: "search_form", locals: {log: @log} %>
 
 <div id="workouts-list">
-    <% @workouts.each do |workout| %>
-        <div class="workout">
-            <a href="<%= log_workout_path(@log, workout) %>"><h4><%= workout.summary %></h4></a>
-            <p><%= workout.date %></p>
-            <p><%= workout.details %></p>
-        </div>
-    <% end %>
+    <%= render partial: "workout", collection: @workouts %>
 </div>

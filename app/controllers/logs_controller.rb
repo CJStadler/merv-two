@@ -40,6 +40,19 @@ class LogsController < ApplicationController
         end
     end
 
+    def summary
+        @log = Log.find_by_name(params[:name])
+        if params[:first_of_week].present?
+            @start_date = Date.parse(params[:first_of_week])
+            @end_date = @start_date + 6.days
+            @workouts = @log.workouts.by_week(@start_date)
+        elsif params[:month].present? && params[:year].present?
+            @start_date = Date.new(params[:year].to_i, params[:month].to_i)
+            @end_date = @start_date.end_of_month
+            @workouts = @log.workouts.by_month(params[:month], params[:year])
+        end
+    end
+
     private
 
     def public_or_current_user

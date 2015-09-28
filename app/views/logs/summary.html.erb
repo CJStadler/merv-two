@@ -1,0 +1,8 @@
+<div id="workouts-summary">
+    <p><%= @start_date %> to <%= @end_date %></p>
+    <p>Total: <%= sum_workouts(@workouts, @log.preferred_distance_unit) %>
+        <%= @log.preferred_distance_unit.name.pluralize %></p>
+    <div>
+        <%= render partial: "workouts/workout", collection: @workouts %>
+    </div>
+</div>

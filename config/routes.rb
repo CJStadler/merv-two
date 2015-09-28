@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
     resources :users
     resources :logs, param: :name do
+        member do
+            get 'summary'
+        end
         resources :workouts
     end
 

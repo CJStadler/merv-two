@@ -16,7 +16,7 @@
     <tfoot>
         <tr>
             <td colspan="8">
-                <%= month_name(first_of_month) %> total:
+                <%= link_to "#{month_name(first_of_month)}:", summary_log_path(month: month, year: year) %>
                 <%= sum_workouts(log.workouts.by_month(month, year), log.preferred_distance_unit) %>
                 <%= log.preferred_distance_unit.name.pluralize %>
             </td>
@@ -42,7 +42,7 @@
                     </td>
                 <% end %>
                 <td class="weekly-total">
-                    Week:
+                    <%= link_to "Week:", summary_log_path(log, first_of_week: first_of_week) %>
                     <strong>
                         <%= sum_workouts(log.workouts.by_week(first_of_week), log.preferred_distance_unit) %>
                         <%= log.preferred_distance_unit.name.pluralize %>

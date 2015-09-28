@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
     def console
-        pause
+        Workout.where("id > 0").nsum
     end
 
     def home
