@@ -1,0 +1,8 @@
+<form action="<%= log_shoes_path(@log) %>" method="POST">
+    <%= token_tag %>
+    <%= render partial: "input", collection: @shoes, as: :shoe %>
+
+    <div>
+        <input type="submit" value="Save">
+    </div>
+</form>

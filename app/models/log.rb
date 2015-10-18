@@ -3,6 +3,7 @@ class Log < ActiveRecord::Base
     # Associations
     #################################
     has_many :workouts
+    has_many :shoes
     belongs_to :user
     belongs_to :preferred_distance_unit, class_name: 'DistanceUnit'
 

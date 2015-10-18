@@ -4,7 +4,7 @@ class Workout < ActiveRecord::Base
     ##################################
     belongs_to :distance_unit
     belongs_to :log
-    #belongs_to :shoe
+    belongs_to :shoe
 
     # Validations
     ##################################

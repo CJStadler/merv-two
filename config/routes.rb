@@ -8,6 +8,7 @@ Rails.application.routes.draw do
             get 'summary'
         end
         resources :workouts
+        resources :shoes
     end
 
     get "/login", to: "welcome#home"
