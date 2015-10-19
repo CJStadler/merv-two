@@ -1,12 +1,3 @@
-<% if logged_in? %>
-    <p>Logged in as: <%= @current_user.name %></p>
-    <p><%= link_to("Sign Out", "/logout") %></p>
-<% else %>
-    <%= render partial: "welcome/login_form" %>
-<% end %>
-
-<%= render partial: "get_log" %>
-
 <h1>Log: <%= @log.name %></h1>
 <%= render partial: "workouts/search_form", locals: {log: @log} %>
 <%= render partial: "calendar_controller", locals: {log: @log, year: @year, month: @month} %>

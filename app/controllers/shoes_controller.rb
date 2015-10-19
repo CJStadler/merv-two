@@ -12,33 +12,34 @@ class ShoesController < ApplicationController
         end
     end
 
+    # This creates and updates shoes
     def create
         @log = Log.find_by_name(params[:log_name])
-        @shoes = @log.shoes
-        # TODO: Should iterate through these and update them + create new
 
-        begin
+        Shoe.transaction do
             params[:shoes].each do |input|
                 if input[:id].present?
-                    shoe = Shoe.find(input[:id])
-                else
+                    shoe = @log.shoes.find_by_id(input[:id])
+                elsif input[:name].present?
+                    # new shoe
                     shoe = Shoe.new
                     shoe.log = @log
                 end
 
-                shoe.name = input[:name]
+                if shoe.present?
+                    shoe.name = input[:name]
 
-                shoe.save!
-                @shoes << shoe
+                    shoe.save!
+                end
             end
-
-            @shoes << Shoe.new
-
-        rescue ActiveRecord::RecordInvalid => e
-            # handle failure
         end
 
-        render :form
+        # success
+        redirect_to log_shoes_path(@log)
+
+    rescue ActiveRecord::RecordInvalid => e
+        # handle failure
+
     end
 
 end

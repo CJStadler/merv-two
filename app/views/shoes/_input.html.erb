@@ -1,5 +1,15 @@
 <div class="shoe-input">
-    <input type="hidden" name="shoes[][id]" value="<%= shoe.id %>">
-    <input type="text" id="shoe-<%= shoe.id %>" name="shoes[][name]" value="<%= shoe.name %>">
-    <label for="shoe-<%= shoe.id %>"><%= shoe.distance %><%= @log.preferred_distance_unit.abbreviation %></label>
+    <input type="hidden" name="shoes[][id]" value="<%= shoe.id %>" >
+    <input
+        type="text"
+        id="shoe-<%= shoe.id %>"
+        name="shoes[][name]"
+        value="<%= shoe.name %>"
+        placeholder="Add New Shoe">
+    <% if shoe.workouts.size > 0 %>
+        <label for="shoe-<%= shoe.id %>">
+            <%= shoe.distance.to_i %><%= @log.preferred_distance_unit.abbreviation %>:
+            <%= shoe.first_used_on %> - <%= shoe.last_used_on %>
+        </label>
+    <% end %>
 </div>

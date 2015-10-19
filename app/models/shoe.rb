@@ -15,7 +15,7 @@ class Shoe < ActiveRecord::Base
     # Return the total distance from all workouts
     # Do we need to specify the units on this?
     def distance
-        d = 0
+        d = Unitwise(0, log.preferred_distance_unit.name)
 
         if workouts.present?
             d = workouts.reduce(d) { |sum, w|
@@ -30,7 +30,16 @@ class Shoe < ActiveRecord::Base
     def first_used_on
         w = workouts.order("date ASC").first
         if w.present?
-            w.first
+            w.date
+        else
+            nil
+        end
+    end
+
+    def last_used_on
+        w = workouts.order("date DESC").first
+        if w.present?
+            w.date
         else
             nil
         end
