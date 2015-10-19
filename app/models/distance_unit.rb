@@ -9,7 +9,12 @@ class DistanceUnit < ActiveRecord::Base
         end
     end
 
+    def plural
+        name.pluralize
+    end
+
     def self.for_log(log)
         where("log_id IS NULL OR log_id = ?", log.id)
     end
+
 end

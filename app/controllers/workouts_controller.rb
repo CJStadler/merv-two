@@ -16,6 +16,13 @@ class WorkoutsController < ApplicationController
         @log = Log.find_by_name(params[:log_name])
         @workout = Workout.new
 
+        most_recent_workout = @log.workouts.order("date DESC").limit(1).first
+        if most_recent_workout.present?
+            @shoe = most_recent_workout.shoe
+        else
+            @shoe = nil
+        end
+
         if params[:date].present?
             @workout.date = params[:date]
         end

@@ -1,27 +1,38 @@
-<%= form_for [@log, @workout] do |f| %>
-    <div>
-        <%= f.label(:date) %>
-        <%= f.date_field(:date) %>
-    </div>
-    <div>
-        <%= f.label(:distance) %>
-        <%= f.number_field(:distance, min: 0) %>
-        <%= f.label(:duration) %>
-        <%= f.number_field(:duration, min: 0) %>
-    </div>
-    <div>
-        <%= f.label(:title) %>
-        <%= f.text_field(:title) %>
-    </div>
-    <div>
-        <%= f.label(:details) %>
-        <%= f.text_area(:details) %>
-    </div>
-    <div>
-        <%= f.label(:shoe_id) %>
-        <%= f.collection_select(:shoe_id, @log.shoes, :id, :name, :include_blank => true) %>
-    </div>
-    <div>
-        <%= f.submit %>
-    </div>
-<% end %>
+<div id="workout-form">
+    <h1>New Workout</h1>
+    <%= form_for [@log, @workout] do |f| %>
+        <div>
+            <%= f.date_field(:date) %>
+        </div>
+        <div>
+            <%= f.number_field(:distance, min: 0, placeholder: "Distance") %>
+            <%= f.collection_select(
+                :distance_unit_id,
+                DistanceUnit.for_log(@log),
+                :id,
+                :plural,
+                selected: @log.preferred_distance_unit)
+            %>
+            <%= f.number_field(:duration, min: 0, placeholder: "Duration") %>
+        </div>
+        <div class="title-box">
+            <%= f.text_field(:title, placeholder: "Title") %>
+        </div>
+        <div class="details-box">
+            <%= f.label(:details) %>
+            <%= f.text_area(:details) %>
+        </div>
+        <div>
+            <%= f.collection_select(
+                :shoe_id,
+                @log.shoes,
+                :id,
+                :name,
+                :include_blank => true,
+                :selected => @shoe.id) %>
+        </div>
+        <div>
+            <%= f.submit %>
+        </div>
+    <% end %>
+</div>

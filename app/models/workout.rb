@@ -22,7 +22,9 @@ class Workout < ActiveRecord::Base
     ##################################
 
     def distance
-        Unitwise(read_attribute(:distance), distance_unit.name)
+        d = read_attribute(:distance)
+        d ||= 0
+        Unitwise(d, distance_unit.name)
     end
 
     def summary

@@ -1,0 +1,16 @@
+<div id="masthead">
+    <div id="main-logo">
+        <h1>Merv (Two)</h1>
+    </div>
+    <div id="get-log">
+        <%= render partial: "logs/get_log" %>
+    </div>
+    <div id="user-info">
+        <% if logged_in? %>
+            <p>Logged in as: <%= @current_user.name %></p>
+            <p><%= link_to("Sign Out", logout_path) %></p>
+        <% else %>
+            <%= link_to "Log In", logout_path %>
+        <% end %>
+    </div>
+</div>

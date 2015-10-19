@@ -30,8 +30,8 @@ module LogsHelper
     end
 
     def sum_workouts(workouts, unit)
-        workouts.reduce(0) {
-            |sum, w| sum + w.distance.convert_to(unit.name).to_f
+        workouts.reduce(0) { |sum, w|
+            sum + w.distance.convert_to(unit.name).to_f
         }
     end
 

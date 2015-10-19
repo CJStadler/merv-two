@@ -11,11 +11,11 @@ Why do we show the next n months when the user usually wants to see the previous
 - Calendar view.
 - Lookup logs by name.
 - Keyword search of workouts.
+- Shoe tracker.
 
 ## Future Features
 
 - Weekly (or other timespan) summary.
-- Track shoes.
 - Workout types.
 - Chart mileage over time.
 - Import and export.
