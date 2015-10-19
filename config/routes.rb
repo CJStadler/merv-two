@@ -11,9 +11,9 @@ Rails.application.routes.draw do
         resources :shoes
     end
 
-    get "/login", to: "welcome#home"
+    get "/login", to: "welcome#home", as: "login"
     post "/authenticate", to: "users#authenticate"
-    get "/logout", to: "users#logout"
+    get "/logout", to: "users#logout", as: "logout"
 
     get "/console", to: "welcome#console"
 end
