@@ -1,0 +1,35 @@
+@import 'globals';
+
+#sign-in-container {
+    background-color: $main_blue;
+    margin: 3em auto;
+    width: 500px;
+    max-width: 100%;
+    padding: 1em;
+    text-align: center;
+
+    h1 {
+        font-size: 1.5em;
+        margin-top: 0;
+    }
+
+    h2 {
+        font-size: 1em;
+        margin-bottom: 0.25em;
+    }
+
+    #login > div {
+
+        .label-container {
+            display: inline-block;
+            width: 33%;
+            text-align: right;
+        }
+
+        .input-container {
+            display: inline-block;
+            width: 66%;
+            text-align: left;
+        }
+    }
+}

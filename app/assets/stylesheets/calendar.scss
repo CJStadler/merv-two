@@ -3,8 +3,9 @@
 #calendar {
     height: 500px;
     margin: 20px 0;
+    border: 1px solid black;
     overflow: auto;
-    padding-right: 1px; /* Otherwise there is horizontal overflow for some reason */
+    padding: 0 5px; /* Otherwise there is horizontal overflow for some reason */
 }
 
 .month {
